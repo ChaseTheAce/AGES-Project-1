@@ -7,10 +7,8 @@ using UnityEngine;
 public class CraftManager
 {
 
-    public Color m_PlayerColor;
     public Transform spawnPoint;
     [HideInInspector] public int playerNumber;
-    [HideInInspector] public string m_ColoredPlayerText;
     [HideInInspector] public GameObject m_Instance;
     [HideInInspector] public int m_Wins;
 
@@ -27,19 +25,10 @@ public class CraftManager
     {
         movement = m_Instance.GetComponent<CraftMovement>();
         shooting = m_Instance.GetComponent<Shoot>();
-        //m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
 
         movement.playerNumber = playerNumber;
         shooting.playerNumber = playerNumber;
 
-        //m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
-
-        //MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
-
-        //for (int i = 0; i < renderers.Length; i++)
-        //{
-        //    renderers[i].material.color = m_PlayerColor;
-        //}
     }
 
 
@@ -48,7 +37,6 @@ public class CraftManager
         movement.enabled = false;
         shooting.enabled = false;
 
-        //m_CanvasGameObject.SetActive(false);
     }
 
 
@@ -57,7 +45,6 @@ public class CraftManager
         movement.enabled = true;
         shooting.enabled = true;
 
-        //m_CanvasGameObject.SetActive(true);
     }
 
 

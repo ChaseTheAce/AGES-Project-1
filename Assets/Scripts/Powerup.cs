@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Powerup : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     int initialSpawnTime = 5;
 
+    [SerializeField]
+    Text pwrUpTxt;
+
     MeshRenderer meshRenderer;
 
     BoxCollider boxCollider;
@@ -38,6 +42,7 @@ public class Powerup : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<BoxCollider>();
+        pwrUpTxt.text = null;
         StartCoroutine(SpawnPowerUp());
     }
 
@@ -61,21 +66,27 @@ public class Powerup : MonoBehaviour
         if (isPowerShot)
         {     
             gameObject.GetComponent<Shoot>().shot = powerShot;
+            pwrUpTxt.text = "Power Shot!";
             yield return new WaitForSeconds(5);
-            gameObject.GetComponent<Shoot>().shot = normalShot;
+            pwrUpTxt.text = null;
+            gameObject.GetComponent<Shoot>().shot = normalShot;            
         }
 
         if (isSpeedBoost)
         {
             gameObject.GetComponent<CraftMovement>().speed = 20;
+            pwrUpTxt.text = "SpeedBoost!";
             yield return new WaitForSeconds(5);
+            pwrUpTxt.text = null;
             gameObject.GetComponent<CraftMovement>().speed = 12;
         }
 
         if (isHeavy)
         {
             gameObject.GetComponent<Rigidbody>().mass = powerUpMass;
+            pwrUpTxt.text = "Stone Form!";
             yield return new WaitForSeconds(5);
+            pwrUpTxt.text = null;
             gameObject.GetComponent<Rigidbody>().mass = 1;
         }
 
@@ -110,6 +121,13 @@ public class Powerup : MonoBehaviour
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
         
+    }
+
+    IEnumerator ShowText()
+    {
+        yield return new WaitForSeconds(5);
+        pwrUpTxt.text = null;
+
     }
 
     public void Reset()

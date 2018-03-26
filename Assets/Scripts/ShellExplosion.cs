@@ -5,9 +5,6 @@ using UnityEngine;
 public class ShellExplosion : MonoBehaviour {
 
     public LayerMask playerMask;
-    //public ParticleSystem explosionParticles;
-    //public AudioSource explosionAudio;
-    //public float maxDamage = 100f;
     public float maxplosionForce = 1000f;
     public float maxLifeTime = 2f;
     public float explosionRadius = 5f;
@@ -42,13 +39,6 @@ public class ShellExplosion : MonoBehaviour {
 
             }
 
-            //explosionParticles.transform.parent = null;
-
-            //explosionParticles.Play();
-
-            //explosionAudio.Play();
-
-            //Destroy(explosionParticles.gameObject, explosionParticles.duration);
             Destroy(gameObject);
         }
 

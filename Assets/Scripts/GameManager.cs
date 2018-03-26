@@ -28,17 +28,7 @@ public class GameManager : MonoBehaviour {
     private CraftManager roundWinner;
     private CraftManager gameWinner;
 
-
-    private static List<Player> allPlayers;
-
-    public static int NumberOfJoinedPlayers
-    {
-        get
-        {
-            return allPlayers.Where(player => player.IsJoined).Count();
-        }
-    }
-
+    public static CraftManager winner;
 
     private void Start()
     {
@@ -180,7 +170,10 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < crafts.Length; i++)
         {
             if (crafts[i].m_Wins == numRoundsToWin)
+            {
+                winner = crafts[i];
                 return crafts[i];
+            }
         }
 
         return null;
