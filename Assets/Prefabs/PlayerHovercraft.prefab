@@ -28,6 +28,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1482933720550592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4397417039154366}
+  m_Layer: 8
+  m_Name: Fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1651366483254338
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,11 +86,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4800551545071842}
   - component: {fileID: 54744602505406480}
-  - component: {fileID: 65769375849509908}
   - component: {fileID: 114935216203211360}
-  m_Layer: 0
+  - component: {fileID: 114192116308706534}
+  - component: {fileID: 65293104621194674}
+  m_Layer: 8
   m_Name: PlayerHovercraft
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +135,19 @@ Transform:
   m_Father: {fileID: 4800551545071842}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4397417039154366
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482933720550592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.29, z: 2.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4800551545071842}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4800551545071842
 Transform:
   m_ObjectHideFlags: 1
@@ -126,15 +155,16 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1968630983095528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4299090513333410}
   - {fileID: 4089531531217870}
   - {fileID: 4291161336256926}
+  - {fileID: 4397417039154366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &23194022813905742
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -273,7 +303,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!65 &65769375849509908
+--- !u!65 &65293104621194674
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -283,8 +313,25 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5, y: 3, z: 4.31}
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &114192116308706534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1968630983095528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27d386a645b7814cb4ab8d811b4a582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 2
+  shot: {fileID: 54696925515902146, guid: 9daf736d399a70349b8ad2a94552fdb5, type: 2}
+  fireTransform: {fileID: 4397417039154366}
+  minLaunchForce: 15
+  maxLaunchForce: 40
+  maxChargeTime: 0.75
 --- !u!114 &114935216203211360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,6 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e0dc0dbc8c4b84e913bb671384b4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
+  playerNumber: 2
   speed: 12
   turnSpeed: 180
