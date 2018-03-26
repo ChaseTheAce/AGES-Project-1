@@ -114,6 +114,8 @@ public class Powerup : MonoBehaviour
 
     public void Reset()
     {
+        meshRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         StopAllCoroutines();

@@ -8,11 +8,14 @@ public class CraftManager
 {
 
     public Color m_PlayerColor;
-    public Transform m_SpawnPoint;
-    [HideInInspector] public int m_PlayerNumber;
+    public Transform spawnPoint;
+    [HideInInspector] public int playerNumber;
     [HideInInspector] public string m_ColoredPlayerText;
     [HideInInspector] public GameObject m_Instance;
     [HideInInspector] public int m_Wins;
+
+    public bool isJoined { get; set; }
+
 
 
     private CraftMovement movement;
@@ -26,8 +29,8 @@ public class CraftManager
         shooting = m_Instance.GetComponent<Shoot>();
         //m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
 
-        movement.playerNumber = m_PlayerNumber;
-        shooting.playerNumber = m_PlayerNumber;
+        movement.playerNumber = playerNumber;
+        shooting.playerNumber = playerNumber;
 
         //m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
 
@@ -60,10 +63,15 @@ public class CraftManager
 
     public void Reset()
     {
-        m_Instance.transform.position = m_SpawnPoint.position;
-        m_Instance.transform.rotation = m_SpawnPoint.rotation;
+        m_Instance.transform.position = spawnPoint.position;
+        m_Instance.transform.rotation = spawnPoint.rotation;
 
         m_Instance.SetActive(false);
         m_Instance.SetActive(true);
+    }
+
+    public CraftManager(int _playerNumber)
+    {
+        playerNumber = _playerNumber;
     }
 }

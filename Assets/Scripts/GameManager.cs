@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour {
 
@@ -28,6 +29,17 @@ public class GameManager : MonoBehaviour {
     private CraftManager gameWinner;
 
 
+    private static List<Player> allPlayers;
+
+    public static int NumberOfJoinedPlayers
+    {
+        get
+        {
+            return allPlayers.Where(player => player.IsJoined).Count();
+        }
+    }
+
+
     private void Start()
     {
         startWait = new WaitForSeconds(startDelay);
@@ -45,8 +57,8 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < crafts.Length; i++)
         {
             crafts[i].m_Instance =
-                Instantiate(playerPrefab, crafts[i].m_SpawnPoint.position, crafts[i].m_SpawnPoint.rotation) as GameObject;
-            crafts[i].m_PlayerNumber = i + 1;
+                Instantiate(playerPrefab, crafts[i].spawnPoint.position, crafts[i].spawnPoint.rotation) as GameObject;
+            crafts[i].playerNumber = i + 1;
             crafts[i].Setup();
         }
     }
@@ -73,7 +85,7 @@ public class GameManager : MonoBehaviour {
 
         if (gameWinner != null)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
         else
         {
@@ -180,17 +192,17 @@ public class GameManager : MonoBehaviour {
         string message = "DRAW!";
 
         if (roundWinner != null)
-            message = roundWinner.m_ColoredPlayerText + " WINS THE ROUND!";
+            message = "Player: " + roundWinner.playerNumber + " WINS THE ROUND!";
 
         message += "\n\n\n\n";
 
         for (int i = 0; i < crafts.Length; i++)
         {
-            message += crafts[i].m_ColoredPlayerText + ": " + crafts[i].m_Wins + " WINS\n";
+            message += crafts[i].playerNumber + ": " + crafts[i].m_Wins + " WINS\n";
         }
 
         if (gameWinner != null)
-            message = gameWinner.m_ColoredPlayerText + " WINS THE GAME!";
+            message = "Player: " + gameWinner.playerNumber + " WINS THE GAME!";
 
         return message;
     }
