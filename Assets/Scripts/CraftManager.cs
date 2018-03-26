@@ -16,14 +16,14 @@ public class CraftManager
 
 
 
-    private CraftMovement movement;
+    private PlayerMovement movement;
     private Shoot shooting;
     private GameObject m_CanvasGameObject;
 
 
     public void Setup()
     {
-        movement = m_Instance.GetComponent<CraftMovement>();
+        movement = m_Instance.GetComponent<PlayerMovement>();
         shooting = m_Instance.GetComponent<Shoot>();
 
         movement.playerNumber = playerNumber;

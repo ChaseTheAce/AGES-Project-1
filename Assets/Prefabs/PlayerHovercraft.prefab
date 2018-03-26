@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 114935216203211360}
   - component: {fileID: 114192116308706534}
   - component: {fileID: 65293104621194674}
+  - component: {fileID: 114858547841561902}
   m_Layer: 8
   m_Name: PlayerHovercraft
   m_TagString: Player
@@ -332,13 +333,26 @@ MonoBehaviour:
   minLaunchForce: 15
   maxLaunchForce: 40
   maxChargeTime: 0.75
---- !u!114 &114935216203211360
+--- !u!114 &114858547841561902
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1968630983095528}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e960373ec7e341e42b966d3847b20c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12
+  playerNumber: 1
+--- !u!114 &114935216203211360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1968630983095528}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e0dc0dbc8c4b84e913bb671384b4eb, type: 3}
   m_Name: 
