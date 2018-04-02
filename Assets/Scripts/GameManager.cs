@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
 
         if (gameWinner != null)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
         else
         {
@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour {
         if (roundWinner != null)
             message = "Player: " + roundWinner.playerNumber + " WINS THE ROUND!";
 
-        message += "\n\n\n\n";
+        message += "\n\n";
 
         for (int i = 0; i < crafts.Length; i++)
         {

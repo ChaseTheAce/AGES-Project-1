@@ -4,64 +4,77 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
-    public float speed = 12f;            // The speed that the player will move at.
 
-    Vector3 movementInput;                   // The vector to store the direction of the player's movement.
-    Vector3 turnInput;
+    public float speed = 5;
 
-    Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
-    int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
-    float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
-    public int playerNumber = 1;
+    #region Fields
+    private float xInput;
+    private float yInput;
+    private Vector3 moveDirection;
 
-    void Awake()
+    public int playerNumber;
+
+    Rigidbody rigidbody;
+    #endregion
+
+    private void Awake()
     {
-        playerRigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
-
-    void FixedUpdate()
+    #region Monobehaviour functions
+    private void Update()
     {
-        float moveH = Input.GetAxis("Horizontal" + playerNumber);
-        float moveV = Input.GetAxis("Vertical" + playerNumber);
-
-        float turnH = Input.GetAxis("TurnH" + playerNumber);
-        float turnV = Input.GetAxis("TurnV" + playerNumber);
-
-        Vector3 testInput = new Vector3(0, 0, turnV);
-
-        Debug.Log("Horizontal: " + turnH);
-        Debug.Log("Vertical: " + turnV);
-        // Move the player around the scene.
-        Move(moveH, moveV);
-
-        Turning(turnH, turnV);
+        GetInput();
     }
 
-    void Move(float h, float v)
+    private void OnEnable()
     {
-
-        movementInput.Set(v, 0f, h);
-
-        movementInput = movementInput * speed * Time.deltaTime;
-
-        // Move the player to it's current position plus the movement.
-        playerRigidbody.MovePosition(transform.position + movementInput);
+        rigidbody.isKinematic = false;
+        moveDirection = new Vector3(0, 0, 0);
     }
 
-    void Turning(float h, float v)
+    private void OnDisable()
     {
-        turnInput.Set(h, 0f, v);
+        rigidbody.isKinematic = true;
+    }
 
-        if (turnInput != Vector3.zero)
+    private void FixedUpdate()
+    {
+        UpdateRotation();
+        UpdateMovement();
+        
+    }
+    #endregion
+
+    private void GetInput()
+    {
+        xInput = Input.GetAxis("Horizontal" + playerNumber);
+        yInput = Input.GetAxis("Vertical" + playerNumber);
+
+        moveDirection = new Vector3(xInput, 0, yInput);
+    }
+
+    private void ConvertInputToCameraRelative()
+    {
+        moveDirection = Camera.main.transform.InverseTransformDirection(moveDirection);
+    }
+
+    private void UpdateRotation()
+    {
+        float turnThreshold = 0.1f;
+        if (moveDirection.magnitude > turnThreshold && moveDirection != Vector3.zero)
         {
-            float angle = Mathf.Atan2(h, v) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
-            //Quaternion.LookRotation(turnInput, Vector3.up);
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+
+            rigidbody.transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * speed);
         }
-
-
-
     }
+
+    private void UpdateMovement()
+    {
+        rigidbody.MovePosition(rigidbody.position + (moveDirection * speed * Time.deltaTime));
+    }
+
 }

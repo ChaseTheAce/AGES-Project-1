@@ -74,11 +74,11 @@ public class Powerup : MonoBehaviour
 
         if (isSpeedBoost)
         {
-            gameObject.GetComponent<CraftMovement>().speed = 20;
+            gameObject.GetComponent<PlayerMovement>().speed = 20;
             pwrUpTxt.text = "SpeedBoost!";
             yield return new WaitForSeconds(5);
             pwrUpTxt.text = null;
-            gameObject.GetComponent<CraftMovement>().speed = 12;
+            gameObject.GetComponent<PlayerMovement>().speed = 12;
         }
 
         if (isHeavy)

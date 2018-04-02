@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -578,7 +578,7 @@ MonoBehaviour:
   timeBetweenPowerups: 10
   cameraControl: {fileID: 2118744247}
   messageText: {fileID: 421986777}
-  playerPrefab: {fileID: 1968630983095528, guid: 9e2fcea1413c01f49a32992c742715fa,
+  playerPrefab: {fileID: 1506377139857176, guid: f799e35d4d0830e4388e39a7c6c983b0,
     type: 2}
   crafts:
   - spawnPoint: {fileID: 772337481}
@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 115832681}
   - component: {fileID: 115832680}
   - component: {fileID: 115832679}
+  - component: {fileID: 115832682}
   m_Layer: 5
   m_Name: PwrUpTxt
   m_TagString: Untagged
@@ -642,7 +643,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 48b374ddffaf9374a8fd7f2dab9e841b, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -679,6 +680,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 253.3319}
   m_SizeDelta: {x: 923.4, y: 177.8}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &115832682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115832678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &253151816
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,8 +868,8 @@ Camera:
   m_GameObject: {fileID: 358850100}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6857922, g: 0.35423872, b: 0.8602941, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -888,7 +903,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 358850100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -65}
+  m_LocalPosition: {x: -0, y: 0, z: -65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2118744246}
@@ -904,6 +919,7 @@ GameObject:
   - component: {fileID: 421986776}
   - component: {fileID: 421986778}
   - component: {fileID: 421986777}
+  - component: {fileID: 421986779}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -926,8 +942,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517394, y: -0.0000038146063}
-  m_SizeDelta: {x: 1464.9, y: 282.1}
+  m_AnchoredPosition: {x: 0.00003433261, y: -89.58354}
+  m_SizeDelta: {x: 1873.4, y: 360.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421986777
 MonoBehaviour:
@@ -949,7 +965,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 48b374ddffaf9374a8fd7f2dab9e841b, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -968,6 +984,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 421986775}
+--- !u!114 &421986779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421986775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &542062887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,14 +1143,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2118744245}
-  m_LocalRotation: {x: 0.2961981, y: 0.46984634, z: -0.17101005, w: 0.8137977}
+  m_LocalRotation: {x: 0.24184473, y: 0.66446304, z: -0.24184473, w: 0.66446304}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 358850104}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 40, y: 60, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 90, z: 0}
 --- !u!114 &2118744247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,7 +1164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dampTime: 0.2
   screenEdgeBuffer: 4
-  minSize: 0.65
+  minSize: 10
   targets:
   - {fileID: 0}
   - {fileID: 0}
